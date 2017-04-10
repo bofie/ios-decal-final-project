@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameViewController.swift
 //  Concentration
 //
 //  Created by Bofan Chen on 3/31/17.
@@ -9,27 +9,47 @@
 import UIKit
 import GameKit
 
-class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class GameViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var cardsCollectionView: UICollectionView!
 
+    @IBOutlet weak var flipsTakenLabel: UILabel!
+    @IBOutlet weak var popUpLabel: UILabel!
+    
+    @IBOutlet weak var countDownLabel: UILabel!
+    @IBAction func startOverButton(_ sender: UIButton) {
+        timer.invalidate()
+        self.viewDidLoad()
+        self.cardsCollectionView.reloadData()
+    }
+    
     var cardsSelected: Int = 0
     var firstSelectedCard: Int = -1
-    var cardsNum: Int = 30
+    var cardsNum: Int = 36
     var cardsArray: [Int] = []
-    var firstCell: CardCollectionViewCell? = nil
+    var firstCellIndexPath: IndexPath? = nil
+    var copyOfCardsArray: [Int] = []
+    var flipsNum: Int = 0
+    let timeLimit = 100
+    var countDown: Int = 0
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
         cardsArray = createRandomCards(num: cardsNum)
+        copyOfCardsArray = cardsArray.map {$0}
+        popUpLabel.text = "Let's get started!😍"
+        flipsTakenLabel.text = "0 Flips Taken"
+        flipsNum = 0
+        countDown = timeLimit
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        print (cardsArray)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,32 +66,61 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = cardsArray[indexPath.row]
         let cell = cardsCollectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        let (number, suits) = indexToSuits(index: cardsArray[indexPath.row])
+        if cell.CardImageView.image == nil {
+            return
+        }
+        let (number, suits) = indexToSuits(index: card)
+        var firstCell: CardCollectionViewCell? = nil
+        
+        if firstCellIndexPath != nil {
+            if firstCellIndexPath == indexPath {
+                return
+            }
+            firstCell = cardsCollectionView.cellForItem(at: firstCellIndexPath!) as? CardCollectionViewCell
+        }
         cardsSelected = cardsSelected + 1
-        print (cardsSelected)
         if cardsSelected == 1 {
             firstSelectedCard = card
-            firstCell = cell
+            firstCellIndexPath = indexPath
             cell.CardImageView.image  = UIImage(named: String(number) + "_of_" + suits)
             return
         }
         if cardsSelected == 2 {
-            print ("hi")
+            flipsNum = flipsNum + 1
+            flipsTakenLabel.text = String(flipsNum) + " Flips Taken"
             if card == firstSelectedCard {
-                print ("ho")
+                popUpLabel.text = "It's a pair!!😗"
                 cell.CardImageView.image  = UIImage(named: String(number) + "_of_" + suits)
-                cell.CardImageView.image  = nil
+                delay(bySeconds: 1) {
+                    cell.CardImageView.image = nil
+                    firstCell?.CardImageView.image = nil
+                }
+                copyOfCardsArray = copyOfCardsArray.filter() {$0 != card}
+                if copyOfCardsArray.isEmpty {
+                    popUpLabel.text = "Congratulations!!🤗🤗"
+                    timer.invalidate()
+                    let alert = UIAlertController(title: "Congratulations!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Start over", style: UIAlertActionStyle.default, handler: {action in
+                        self.viewDidLoad()
+                        self.cardsCollectionView.reloadData()}))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
             } else {
-                print ("ha")
+                popUpLabel.text = "Almost!🤓"
                 cell.CardImageView.image  = UIImage(named: String(number) + "_of_" + suits)
-                delay(bySeconds: 2) {
-                    cell.CardImageView.image  = UIImage(named: "back")
-                    self.firstCell?.CardImageView.image  = UIImage(named: "back")
+                delay(bySeconds: 1) {
+                    cell.CardImageView.image = UIImage(named: "back")
+                    firstCell?.CardImageView.image = UIImage(named: "back")
                 }
             }
             cardsSelected = 0
             firstSelectedCard = -1
-            firstCell = nil
+            firstCellIndexPath = nil
+            self.cardsCollectionView.isUserInteractionEnabled = false
+            delay(bySeconds: 1) {
+                self.cardsCollectionView.isUserInteractionEnabled = true
+            }
             return
         }
     }
@@ -105,7 +154,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             return (number, "diamonds")
         case 2:
             return (number, "hearts")
-        case 3:
+        case 3...4:
             return (number, "spades")
         default:
             return (0, "blah")
@@ -141,6 +190,20 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             case .utility:              return DispatchQueue.global(qos: .utility)
             case .background:           return DispatchQueue.global(qos: .background)
             }
+        }
+    }
+    
+    func update() {
+        if (countDown > 0) {
+            countDownLabel.text = String(countDown) + "s left"
+            countDown = countDown - 1
+        } else {
+            countDownLabel.text = String(countDown) + "s left"
+            let alert = UIAlertController(title: "Sorry!", message: "Time's Up!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Start over", style: UIAlertActionStyle.default, handler: {action in self.viewDidLoad()
+                self.cardsCollectionView.reloadData()}))
+            self.present(alert, animated: true, completion: nil)
+            timer.invalidate()
         }
     }
 
