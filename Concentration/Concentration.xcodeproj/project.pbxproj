@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F5259681E9AA47000CC7881 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */; };
 		8F7697AF1E8E43380084ACE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697AE1E8E43380084ACE6 /* AppDelegate.swift */; };
 		8F7697B11E8E43380084ACE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697B01E8E43380084ACE6 /* ViewController.swift */; };
 		8F7697B41E8E43380084ACE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7697B21E8E43380084ACE6 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		8F7697B91E8E43380084ACE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7697B71E8E43380084ACE6 /* LaunchScreen.storyboard */; };
 		8F7697C41E8E43390084ACE6 /* ConcentrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697C31E8E43390084ACE6 /* ConcentrationTests.swift */; };
 		8F7697CF1E8E43390084ACE6 /* ConcentrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697CE1E8E43390084ACE6 /* ConcentrationUITests.swift */; };
+		8F7697DD1E970E070084ACE6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697DC1E970E070084ACE6 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F7697AB1E8E43380084ACE6 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7697AE1E8E43380084ACE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7697B01E8E43380084ACE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		8F7697CA1E8E43390084ACE6 /* ConcentrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcentrationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7697CE1E8E43390084ACE6 /* ConcentrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationUITests.swift; sourceTree = "<group>"; };
 		8F7697D01E8E43390084ACE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F7697DC1E970E070084ACE6 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 			children = (
 				8F7697AE1E8E43380084ACE6 /* AppDelegate.swift */,
 				8F7697B01E8E43380084ACE6 /* ViewController.swift */,
+				8F7697DC1E970E070084ACE6 /* Card.swift */,
 				8F7697B21E8E43380084ACE6 /* Main.storyboard */,
 				8F7697B51E8E43380084ACE6 /* Assets.xcassets */,
 				8F7697B71E8E43380084ACE6 /* LaunchScreen.storyboard */,
 				8F7697BA1E8E43380084ACE6 /* Info.plist */,
+				8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -262,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5259681E9AA47000CC7881 /* CardCollectionViewCell.swift in Sources */,
 				8F7697B11E8E43380084ACE6 /* ViewController.swift in Sources */,
+				8F7697DD1E970E070084ACE6 /* Card.swift in Sources */,
 				8F7697AF1E8E43380084ACE6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +522,7 @@
 				8F7697D51E8E43390084ACE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F7697D61E8E43390084ACE6 /* Build configuration list for PBXNativeTarget "ConcentrationTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +531,7 @@
 				8F7697D81E8E43390084ACE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F7697D91E8E43390084ACE6 /* Build configuration list for PBXNativeTarget "ConcentrationUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +540,7 @@
 				8F7697DB1E8E43390084ACE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
