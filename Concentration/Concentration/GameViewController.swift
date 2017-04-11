@@ -18,7 +18,9 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var countDownLabel: UILabel!
     @IBAction func startOverButton(_ sender: UIButton) {
-        timer.invalidate()
+        if timeLimit != 0 {
+          timer.invalidate()
+        }
         self.viewDidLoad()
         self.cardsCollectionView.reloadData()
     }
@@ -30,12 +32,14 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     var firstCellIndexPath: IndexPath? = nil
     var copyOfCardsArray: [Int] = []
     var flipsNum: Int = 0
-    let timeLimit = 100
+    var playerNum: Int = 1
+    var timeLimit: Int = 100
     var countDown: Int = 0
     var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
         cardsArray = createRandomCards(num: cardsNum)
@@ -43,10 +47,20 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         popUpLabel.text = "Let's get started!😍"
         flipsTakenLabel.text = "0 Flips Taken"
         flipsNum = 0
-        countDown = timeLimit
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        if timeLimit != 0 {
+            countDown = timeLimit
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        } else {
+            countDownLabel.text = ""
+        }
         print (cardsArray)
     }
+    
+    @IBAction func mainMenuButton(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+        self.cardsCollectionView.reloadData()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,7 +73,6 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cardsCollectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCollectionViewCell
         cell.CardImageView.image  = UIImage(named: "back")
-        
         return cell
     }
     
@@ -71,7 +84,6 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         }
         let (number, suits) = indexToSuits(index: card)
         var firstCell: CardCollectionViewCell? = nil
-        
         if firstCellIndexPath != nil {
             if firstCellIndexPath == indexPath {
                 return
@@ -98,7 +110,9 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
                 copyOfCardsArray = copyOfCardsArray.filter() {$0 != card}
                 if copyOfCardsArray.isEmpty {
                     popUpLabel.text = "Congratulations!!🤗🤗"
-                    timer.invalidate()
+                    if timeLimit != 0 {
+                     timer.invalidate()
+                    }
                     let alert = UIAlertController(title: "Congratulations!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Start over", style: UIAlertActionStyle.default, handler: {action in
                         self.viewDidLoad()
@@ -125,20 +139,6 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         }
     }
     
-    func suitsToIndex(number: Int, suits: String) -> Int {
-        switch(suits) {
-        case "clubs":
-            return number
-        case "diamonds":
-            return 13 + number
-        case "hearts":
-            return 26 + number
-        case "spades":
-            return 39 + number
-        default:
-            return 0
-        }
-    }
     
     func indexToSuits(index: Int) -> (Int, String) {
         var number:Int = 0

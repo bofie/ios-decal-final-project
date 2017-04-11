@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F5259681E9AA47000CC7881 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */; };
+		8F5259D31E9C70AF00CC7881 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5259D21E9C70AF00CC7881 /* MainMenuViewController.swift */; };
 		8F7697AF1E8E43380084ACE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697AE1E8E43380084ACE6 /* AppDelegate.swift */; };
 		8F7697B11E8E43380084ACE6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7697B01E8E43380084ACE6 /* GameViewController.swift */; };
 		8F7697B41E8E43380084ACE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7697B21E8E43380084ACE6 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		8F5259D21E9C70AF00CC7881 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		8F7697AB1E8E43380084ACE6 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7697AE1E8E43380084ACE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7697B01E8E43380084ACE6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				8F7697B01E8E43380084ACE6 /* GameViewController.swift */,
 				8F5259671E9AA47000CC7881 /* CardCollectionViewCell.swift */,
+				8F5259D21E9C70AF00CC7881 /* MainMenuViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5259D31E9C70AF00CC7881 /* MainMenuViewController.swift in Sources */,
 				8F5259681E9AA47000CC7881 /* CardCollectionViewCell.swift in Sources */,
 				8F7697B11E8E43380084ACE6 /* GameViewController.swift in Sources */,
 				8F7697AF1E8E43380084ACE6 /* AppDelegate.swift in Sources */,

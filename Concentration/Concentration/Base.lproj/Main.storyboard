@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sni-gu-D2I">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,191 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main Menu View Controller-->
+        <scene sceneID="T2d-H8-UWb">
+            <objects>
+                <viewController id="qVh-J9-CSx" customClass="MainMenuViewController" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JB7-Mm-Hr3"/>
+                        <viewControllerLayoutGuide type="bottom" id="bY0-0Z-OfU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Zb-jb-gjU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_background" translatesAutoresizingMaskIntoConstraints="NO" id="lMy-PS-RDZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="concentration_label" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-ts-M9N">
+                                <rect key="frame" x="6" y="64" width="350" height="161"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="161" id="Bfq-9D-E8k"/>
+                                    <constraint firstAttribute="width" constant="350" id="jGG-uR-Xnq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shJ-Gx-SHg">
+                                <rect key="frame" x="129" y="255" width="117" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="Single Player">
+                                    <color key="titleColor" red="1" green="0.23065644825086029" blue="0.37211051567570053" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectPlayersNumWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="Xha-OZ-6bP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlk-m4-nDu">
+                                <rect key="frame" x="247" y="421" width="39" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title=" 60s">
+                                    <color key="titleColor" red="0.095925620536149059" green="0.27851465257816443" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="9pC-7B-l6Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-VD-xuN">
+                                <rect key="frame" x="313" y="421" width="46" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="120s">
+                                    <color key="titleColor" red="0.1505277108479236" green="0.5843122489680892" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="pup-Ba-u4k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lx-Q8-91X">
+                                <rect key="frame" x="240" y="471" width="46" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="180s">
+                                    <color key="titleColor" red="0.5749386993685881" green="0.93152187777900186" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="nvZ-GJ-dud"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iam-zA-V6M">
+                                <rect key="frame" x="313" y="471" width="46" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="240s">
+                                    <color key="titleColor" red="0.58911610661989333" green="1" blue="0.44324661861516401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="5oF-Jz-PqK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCm-cp-OLF">
+                                <rect key="frame" x="128" y="316" width="119" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="Double Player">
+                                    <color key="titleColor" red="1" green="0.57799487497423108" blue="0.44036532881809931" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectPlayersNumWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="JaC-WN-ILP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEr-VQ-63s">
+                                <rect key="frame" x="237" y="521" width="46" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="300s">
+                                    <color key="titleColor" red="0.39009146269969452" green="0.82114232512953367" blue="0.30957043232309239" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="jJw-2l-QVU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bli-Os-QsJ">
+                                <rect key="frame" x="326" y="521" width="33" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="   ∞">
+                                    <color key="titleColor" red="0.19757472188899478" green="0.55806751943005184" blue="0.19858631404628974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTimeLimitWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="zR3-Wq-Pqb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAK-f7-Lja">
+                                <rect key="frame" x="86" y="577" width="202" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="WNO-zF-KeT"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="start_game"/>
+                                <connections>
+                                    <action selector="enterGameButton:" destination="qVh-J9-CSx" eventType="touchUpInside" id="uvP-xx-9jj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44j-Xv-1e3">
+                                <rect key="frame" x="16" y="421" width="80" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="12 Cards">
+                                    <color key="titleColor" red="0.99834157697214154" green="0.48754891212871565" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectCardsNumWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="IGe-EK-8jW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5A-jy-AFM">
+                                <rect key="frame" x="16" y="471" width="80" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="24 Cards">
+                                    <color key="titleColor" red="0.7804761210438802" green="0.29074529075004663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectCardsNumWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="XEk-MX-24z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-t2-LPn">
+                                <rect key="frame" x="16" y="521" width="80" height="36"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <state key="normal" title="36 Cards">
+                                    <color key="titleColor" red="0.56492676273225007" green="0.21080942067070782" blue="0.72927461139896366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectCardsNumWithSender:" destination="qVh-J9-CSx" eventType="touchUpInside" id="1Dc-YN-yCV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bli-Os-QsJ" secondAttribute="trailing" id="5qs-mM-i1p"/>
+                            <constraint firstItem="RCm-cp-OLF" firstAttribute="top" secondItem="shJ-Gx-SHg" secondAttribute="bottom" constant="25" id="9m0-4e-kDz"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="AUC-t2-LPn" secondAttribute="leading" id="Aqs-4m-0qF"/>
+                            <constraint firstItem="JEr-VQ-63s" firstAttribute="top" secondItem="2Lx-Q8-91X" secondAttribute="bottom" constant="14" id="CQi-ab-7Uu"/>
+                            <constraint firstItem="AUC-t2-LPn" firstAttribute="top" secondItem="Q5A-jy-AFM" secondAttribute="bottom" constant="14" id="DVs-oa-OKd"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="bli-Os-QsJ" secondAttribute="bottom" constant="110" id="GXt-tA-Ee5"/>
+                            <constraint firstItem="RCm-cp-OLF" firstAttribute="centerX" secondItem="0Zb-jb-gjU" secondAttribute="centerX" id="Hjy-DL-Ph0"/>
+                            <constraint firstItem="Iam-zA-V6M" firstAttribute="top" secondItem="hh9-VD-xuN" secondAttribute="bottom" constant="14" id="IE1-vT-lO7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wAK-f7-Lja" secondAttribute="trailing" constant="71" id="LFP-aQ-4gp"/>
+                            <constraint firstItem="wAK-f7-Lja" firstAttribute="leading" secondItem="0Zb-jb-gjU" secondAttribute="leadingMargin" constant="70" id="PpZ-aU-UIF"/>
+                            <constraint firstItem="JEr-VQ-63s" firstAttribute="baseline" secondItem="AUC-t2-LPn" secondAttribute="baseline" id="ToA-kQ-9Qd"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="wAK-f7-Lja" secondAttribute="bottom" constant="30" id="UTS-ZD-hRE"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="AUC-t2-LPn" secondAttribute="bottom" constant="110" id="VgX-Nk-4qJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hh9-VD-xuN" secondAttribute="trailing" id="WTc-EA-SeJ"/>
+                            <constraint firstItem="shJ-Gx-SHg" firstAttribute="top" secondItem="9kE-ts-M9N" secondAttribute="bottom" constant="30" id="YvD-1g-JBt"/>
+                            <constraint firstItem="Q5A-jy-AFM" firstAttribute="top" secondItem="44j-Xv-1e3" secondAttribute="bottom" constant="14" id="ZPH-Sz-Vsd"/>
+                            <constraint firstItem="bli-Os-QsJ" firstAttribute="leading" secondItem="JEr-VQ-63s" secondAttribute="trailing" constant="43" id="bCK-Dp-ARu"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="JEr-VQ-63s" secondAttribute="bottom" constant="110" id="dWa-vm-jVG"/>
+                            <constraint firstItem="hh9-VD-xuN" firstAttribute="leading" secondItem="nlk-m4-nDu" secondAttribute="trailing" constant="27" id="eO6-NU-TCq"/>
+                            <constraint firstItem="Iam-zA-V6M" firstAttribute="leading" secondItem="2Lx-Q8-91X" secondAttribute="trailing" constant="27" id="g9U-jZ-jNX"/>
+                            <constraint firstItem="2Lx-Q8-91X" firstAttribute="top" secondItem="nlk-m4-nDu" secondAttribute="bottom" constant="14" id="hu8-nq-ldD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iam-zA-V6M" secondAttribute="trailing" id="iR3-vE-aKL"/>
+                            <constraint firstItem="9kE-ts-M9N" firstAttribute="leading" secondItem="0Zb-jb-gjU" secondAttribute="leadingMargin" constant="-10" id="lPH-96-7Ic"/>
+                            <constraint firstItem="bli-Os-QsJ" firstAttribute="top" secondItem="Iam-zA-V6M" secondAttribute="bottom" constant="14" id="oYE-8I-rWu"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Q5A-jy-AFM" secondAttribute="leading" id="qFk-Fa-qGc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="44j-Xv-1e3" secondAttribute="leading" id="qFx-mM-YyG"/>
+                            <constraint firstItem="9kE-ts-M9N" firstAttribute="top" secondItem="JB7-Mm-Hr3" secondAttribute="bottom" id="s7v-xa-NYU"/>
+                            <constraint firstItem="shJ-Gx-SHg" firstAttribute="centerX" secondItem="0Zb-jb-gjU" secondAttribute="centerX" id="sIc-QC-OeC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iNg-Ex-Q9q"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="enterGameSegue" id="QJg-Qn-C3S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="db6-D9-jCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320.80000000000001" y="142.57871064467767"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -72,6 +257,9 @@
                                 <rect key="frame" x="13" y="631" width="100" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Main Menu"/>
+                                <connections>
+                                    <action selector="mainMenuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cFU-jU-UhH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdl-9N-JFv">
                                 <rect key="frame" x="268" y="631" width="91" height="36"/>
@@ -111,10 +299,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rza-D9-H5W">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sni-gu-D2I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pec-dS-Afd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qVh-J9-CSx" kind="relationship" relationship="rootViewController" id="ljK-Yb-lOD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gND-El-A32" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-618.39999999999998" y="142.57871064467767"/>
         </scene>
     </scenes>
     <resources>
         <image name="concentration_background" width="736" height="1308"/>
+        <image name="concentration_label" width="600" height="156"/>
+        <image name="menu_background" width="735" height="1265"/>
+        <image name="start_game" width="333" height="151"/>
     </resources>
 </document>
