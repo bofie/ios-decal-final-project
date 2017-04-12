@@ -15,6 +15,8 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     @IBOutlet weak var flipsTakenLabel: UILabel!
     @IBOutlet weak var popUpLabel: UILabel!
+    @IBOutlet weak var playerOneLabel: UILabel!
+    @IBOutlet weak var playerTwoLabel: UILabel!
     
     @IBOutlet weak var countDownLabel: UILabel!
     @IBAction func startOverButton(_ sender: UIButton) {
@@ -25,17 +27,25 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         self.cardsCollectionView.reloadData()
     }
     
+    var cardsNum: Int = 36
+    var playerNum: Int = 1
+    var timeLimit: Int = 100
+
+    var cardsArray: [Int] = []
     var cardsSelected: Int = 0
     var firstSelectedCard: Int = -1
-    var cardsNum: Int = 36
-    var cardsArray: [Int] = []
     var firstCellIndexPath: IndexPath? = nil
     var copyOfCardsArray: [Int] = []
     var flipsNum: Int = 0
-    var playerNum: Int = 1
-    var timeLimit: Int = 100
     var countDown: Int = 0
     var timer = Timer()
+    
+    var playerOneScore: Int = 0
+    var playerTwoScore: Int = 0
+    var playerOneTurn: Bool = true
+    var playerOneName: String = "Player 1"
+    var playerTwoName: String = "Player 2"
+    var singlePlayerName: String = "Player"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +55,45 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         cardsArray = createRandomCards(num: cardsNum)
         copyOfCardsArray = cardsArray.map {$0}
         popUpLabel.text = "Let's get started!😍"
+        popUpLabel.numberOfLines = 0
+        if playerNum == 1 && singlePlayerName != "" {
+            popUpLabel.text = singlePlayerName + ", let's get started!😍"
+        }
         flipsTakenLabel.text = "0 Flips Taken"
         flipsNum = 0
+        if cardsNum == 12 {
+            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 350)
+        }
+        if cardsNum == 24 {
+            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 430)
+        }
+        if cardsNum == 36 {
+            if playerNum == 1 {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 70)
+            } else {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 90)
+            }
+
+        }
+        if playerNum == 1 {
+            playerOneLabel.text = ""
+            playerTwoLabel.text = ""
+        } else {
+            playerOneLabel.numberOfLines = 0
+            playerOneLabel.text = playerOneName + "\n0 🃏"
+            playerOneLabel.layer.borderColor = UIColor.black.cgColor
+            playerOneLabel.layer.borderWidth = 2
+            playerTwoLabel.layer.borderColor = UIColor.black.cgColor
+            playerTwoLabel.layer.borderWidth = 0
+            playerTwoLabel.numberOfLines = 0
+            playerTwoLabel.text = playerTwoName + "\n0 🃏"
+        }
         if timeLimit != 0 {
             countDown = timeLimit
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
         } else {
             countDownLabel.text = ""
         }
-        print (cardsArray)
     }
     
     @IBAction func mainMenuButton(_ sender: UIButton) {
@@ -102,6 +142,15 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
             flipsTakenLabel.text = String(flipsNum) + " Flips Taken"
             if card == firstSelectedCard {
                 popUpLabel.text = "It's a pair!!😗"
+                if playerNum == 2 {
+                    if playerOneTurn {
+                        playerOneScore = playerOneScore + 2
+                        playerOneLabel.text = playerOneName + "\n" + String(playerOneScore) + " 🃏"
+                    } else {
+                        playerTwoScore = playerTwoScore + 2
+                        playerTwoLabel.text = playerTwoName + "\n" + String(playerTwoScore) + " 🃏"
+                    }
+                }
                 cell.CardImageView.image  = UIImage(named: String(number) + "_of_" + suits)
                 delay(bySeconds: 1) {
                     cell.CardImageView.image = nil
@@ -113,7 +162,19 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
                     if timeLimit != 0 {
                      timer.invalidate()
                     }
-                    let alert = UIAlertController(title: "Congratulations!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
+                    var alert = UIAlertController(title: "Congratulations!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
+                    if playerNum == 1 && singlePlayerName != "" {
+                        alert = UIAlertController(title: "Congratulations, " + singlePlayerName + "!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
+                    }
+                    if playerNum == 2 {
+                        if playerOneScore > playerTwoScore {
+                            alert = UIAlertController(title: "Congratulations!", message: playerOneName + " is the WINNER!!", preferredStyle: UIAlertControllerStyle.alert)
+                        } else if playerOneScore < playerTwoScore {
+                            alert = UIAlertController(title: "Congratulations!", message: playerTwoName + " is the WINNER!!", preferredStyle: UIAlertControllerStyle.alert)
+                        } else {
+                            alert = UIAlertController(title: "It's a draw!", message: "Rematch?", preferredStyle: UIAlertControllerStyle.alert)
+                        }
+                    }
                     alert.addAction(UIAlertAction(title: "Start over", style: UIAlertActionStyle.default, handler: {action in
                         self.viewDidLoad()
                         self.cardsCollectionView.reloadData()}))
@@ -122,6 +183,21 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
                 
             } else {
                 popUpLabel.text = "Almost!🤓"
+                if playerNum == 2 {
+                    if playerOneTurn {
+                        delay(bySeconds: 1) {
+                            self.playerTwoLabel.layer.borderWidth = 2
+                            self.playerOneLabel.layer.borderWidth = 0
+                        }
+                        playerOneTurn = false
+                    } else {
+                        delay(bySeconds: 1) {
+                            self.playerOneLabel.layer.borderWidth = 2
+                            self.playerTwoLabel.layer.borderWidth = 0
+                        }
+                        playerOneTurn = true
+                    }
+                }
                 cell.CardImageView.image  = UIImage(named: String(number) + "_of_" + suits)
                 delay(bySeconds: 1) {
                     cell.CardImageView.image = UIImage(named: "back")

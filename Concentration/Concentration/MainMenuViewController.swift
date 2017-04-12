@@ -18,10 +18,19 @@ class MainMenuViewController: UIViewController {
     var previousCardButton: UIButton? = nil
     var previousTimeButton: UIButton? = nil
     
+
+    @IBOutlet weak var playerOneNameTextField: UITextField!
+    @IBOutlet weak var playerTwoNameTextField: UITextField!
+    @IBOutlet weak var singlePlayerNameTextField: UITextField!
+    @IBOutlet weak var vsImage: UIImageView!
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
+        playerOneNameTextField.isHidden = true
+        playerTwoNameTextField.isHidden = true
+        singlePlayerNameTextField.isHidden = true
+        vsImage.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,8 +49,19 @@ class MainMenuViewController: UIViewController {
         case 1:
             playerNum = 1
             previousPlayerButton = button
+            singlePlayerNameTextField.isHidden = false
+            playerOneNameTextField.isHidden = true
+            playerTwoNameTextField.isHidden = true
+            singlePlayerNameTextField.placeholder = "What's your name?"
+            vsImage.isHidden = true
         case 2:
             playerNum = 2
+            vsImage.isHidden = false
+            singlePlayerNameTextField.isHidden = true
+            playerOneNameTextField.isHidden = false
+            playerTwoNameTextField.isHidden = false
+            playerOneNameTextField.placeholder = "P1 Name"
+            playerTwoNameTextField.placeholder = "P2 Name"
             previousPlayerButton = button
         default:
             print("Unknown player num")
@@ -123,6 +143,15 @@ class MainMenuViewController: UIViewController {
                     dest.playerNum = playerNum
                     dest.cardsNum = cardsNum
                     dest.timeLimit = timeLimit
+                    if playerOneNameTextField.text != "" {
+                        dest.playerOneName = playerOneNameTextField.text!
+                    }
+                    if playerTwoNameTextField.text != "" {
+                        dest.playerTwoName = playerTwoNameTextField.text!
+                    }
+                    if singlePlayerNameTextField.text != "" {
+                        dest.singlePlayerName = singlePlayerNameTextField.text!
+                    }
                 }
             }
         }
