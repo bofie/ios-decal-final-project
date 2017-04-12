@@ -8,6 +8,7 @@
 
 import UIKit
 import GameKit
+import AVFoundation
 
 class GameViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -27,6 +28,15 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         self.cardsCollectionView.reloadData()
     }
     
+    @IBAction func bgmButton(_ sender: UIButton) {
+        if player!.isPlaying {
+            player!.pause()
+        } else {
+            player!.prepareToPlay()
+            player!.play()
+        }
+    }
+    
     var cardsNum: Int = 36
     var playerNum: Int = 1
     var timeLimit: Int = 100
@@ -39,6 +49,8 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     var flipsNum: Int = 0
     var countDown: Int = 0
     var timer = Timer()
+    var player: AVAudioPlayer?
+
     
     var playerOneScore: Int = 0
     var playerTwoScore: Int = 0
@@ -56,20 +68,22 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         copyOfCardsArray = cardsArray.map {$0}
         popUpLabel.text = "Let's get started!😍"
         popUpLabel.numberOfLines = 0
-        if playerNum == 1 && singlePlayerName != "" {
+        if playerNum == 1 && singlePlayerName != "Player" {
             popUpLabel.text = singlePlayerName + ", let's get started!😍"
         }
         flipsTakenLabel.text = "0 Flips Taken"
         flipsNum = 0
         if cardsNum == 12 {
-            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 350)
+            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 120)
+            cardsCollectionView.contentInset.top = 100
         }
         if cardsNum == 24 {
-            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 430)
+            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 100)
+            cardsCollectionView.contentInset.top = 50
         }
         if cardsNum == 36 {
             if playerNum == 1 {
-                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 70)
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 65)
             } else {
                 popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 90)
             }
@@ -94,6 +108,12 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         } else {
             countDownLabel.text = ""
         }
+        let url = Bundle.main.url(forResource: "bgm", withExtension: "mp3")
+        do {
+            player = try AVAudioPlayer(contentsOf: url!)
+        }catch{
+            print(error)
+        }
     }
     
     @IBAction func mainMenuButton(_ sender: UIButton) {
@@ -105,6 +125,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cardsNum
@@ -260,11 +281,16 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         case main, userInteractive, userInitiated, utility, background
         var dispatchQueue: DispatchQueue {
             switch self {
-            case .main:                 return DispatchQueue.main
-            case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
-            case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
-            case .utility:              return DispatchQueue.global(qos: .utility)
-            case .background:           return DispatchQueue.global(qos: .background)
+            case .main:
+                return DispatchQueue.main
+            case .userInteractive:
+                return DispatchQueue.global(qos: .userInteractive)
+            case .userInitiated:
+                return DispatchQueue.global(qos: .userInitiated)
+            case .utility:
+                return DispatchQueue.global(qos: .utility)
+            case .background:
+                return DispatchQueue.global(qos: .background)
             }
         }
     }

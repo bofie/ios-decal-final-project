@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, UITextFieldDelegate {
     
     var playerNum: Int = -1
     var cardsNum: Int = -1
@@ -30,6 +30,9 @@ class MainMenuViewController: UIViewController {
         playerOneNameTextField.isHidden = true
         playerTwoNameTextField.isHidden = true
         singlePlayerNameTextField.isHidden = true
+        self.playerOneNameTextField.delegate = self
+        self.playerTwoNameTextField.delegate = self
+        self.singlePlayerNameTextField.delegate = self
         vsImage.isHidden = true
     }
     
@@ -60,13 +63,18 @@ class MainMenuViewController: UIViewController {
             singlePlayerNameTextField.isHidden = true
             playerOneNameTextField.isHidden = false
             playerTwoNameTextField.isHidden = false
-            playerOneNameTextField.placeholder = "P1 Name"
-            playerTwoNameTextField.placeholder = "P2 Name"
+            playerOneNameTextField.placeholder = "P1 Name "
+            playerTwoNameTextField.placeholder = "P2 Name "
             previousPlayerButton = button
         default:
             print("Unknown player num")
         return
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func selectCardsNum(sender: AnyObject) {
