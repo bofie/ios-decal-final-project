@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlk-m4-nDu">
-                                <rect key="frame" x="247" y="441" width="39" height="36"/>
+                                <rect key="frame" x="247" y="451" width="39" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title=" 60s">
                                     <color key="titleColor" red="0.095925620536149059" green="0.27851465257816443" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,7 +54,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-VD-xuN">
-                                <rect key="frame" x="313" y="441" width="46" height="36"/>
+                                <rect key="frame" x="313" y="451" width="46" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="120s">
                                     <color key="titleColor" red="0.1505277108479236" green="0.5843122489680892" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lx-Q8-91X">
-                                <rect key="frame" x="240" y="491" width="46" height="36"/>
+                                <rect key="frame" x="240" y="501" width="46" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="180s">
                                     <color key="titleColor" red="0.5749386993685881" green="0.93152187777900186" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,7 +74,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iam-zA-V6M">
-                                <rect key="frame" x="313" y="491" width="46" height="36"/>
+                                <rect key="frame" x="313" y="501" width="46" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="240s">
                                     <color key="titleColor" red="0.58911610661989333" green="1" blue="0.44324661861516401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,7 +94,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEr-VQ-63s">
-                                <rect key="frame" x="240" y="541" width="46" height="36"/>
+                                <rect key="frame" x="240" y="551" width="46" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="300s">
                                     <color key="titleColor" red="0.39009146269969452" green="0.82114232512953367" blue="0.30957043232309239" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bli-Os-QsJ">
-                                <rect key="frame" x="329" y="541" width="30" height="36"/>
+                                <rect key="frame" x="329" y="551" width="30" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title=" ∞">
                                     <color key="titleColor" red="0.19757472188899478" green="0.55806751943005184" blue="0.19858631404628974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,7 +125,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44j-Xv-1e3">
-                                <rect key="frame" x="16" y="441" width="80" height="36"/>
+                                <rect key="frame" x="16" y="451" width="80" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="12 Cards">
                                     <color key="titleColor" red="0.99834157697214154" green="0.48754891212871565" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5A-jy-AFM">
-                                <rect key="frame" x="16" y="491" width="80" height="36"/>
+                                <rect key="frame" x="16" y="501" width="80" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="24 Cards">
                                     <color key="titleColor" red="0.7804761210438802" green="0.29074529075004663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-t2-LPn">
-                                <rect key="frame" x="16" y="541" width="80" height="36"/>
+                                <rect key="frame" x="16" y="551" width="80" height="36"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
                                 <state key="normal" title="36 Cards">
                                     <color key="titleColor" red="0.56492676273225007" green="0.21080942067070782" blue="0.72927461139896366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,19 +195,19 @@
                             <constraint firstItem="hIl-me-VWn" firstAttribute="baseline" secondItem="Rp4-FL-uwk" secondAttribute="baseline" id="CWi-5D-vH1"/>
                             <constraint firstItem="AUC-t2-LPn" firstAttribute="top" secondItem="Q5A-jy-AFM" secondAttribute="bottom" constant="14" id="DVs-oa-OKd"/>
                             <constraint firstItem="fTr-Nx-oHK" firstAttribute="leading" secondItem="0Zb-jb-gjU" secondAttribute="leadingMargin" constant="-12" id="EDI-oA-Xcy"/>
-                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="bli-Os-QsJ" secondAttribute="bottom" constant="90" id="GXt-tA-Ee5"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="bli-Os-QsJ" secondAttribute="bottom" constant="80" id="GXt-tA-Ee5"/>
                             <constraint firstItem="RCm-cp-OLF" firstAttribute="centerX" secondItem="0Zb-jb-gjU" secondAttribute="centerX" id="Hjy-DL-Ph0"/>
                             <constraint firstItem="Iam-zA-V6M" firstAttribute="top" secondItem="hh9-VD-xuN" secondAttribute="bottom" constant="14" id="IE1-vT-lO7"/>
                             <constraint firstItem="6Ud-D0-uGV" firstAttribute="centerX" secondItem="0Zb-jb-gjU" secondAttribute="centerX" id="MVm-B8-h1D"/>
                             <constraint firstItem="wAK-f7-Lja" firstAttribute="leading" secondItem="0Zb-jb-gjU" secondAttribute="leadingMargin" constant="70" id="PpZ-aU-UIF"/>
                             <constraint firstItem="JEr-VQ-63s" firstAttribute="baseline" secondItem="AUC-t2-LPn" secondAttribute="baseline" id="ToA-kQ-9Qd"/>
                             <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="wAK-f7-Lja" secondAttribute="bottom" constant="10" id="UTS-ZD-hRE"/>
-                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="AUC-t2-LPn" secondAttribute="bottom" constant="90" id="VgX-Nk-4qJ"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="AUC-t2-LPn" secondAttribute="bottom" constant="80" id="VgX-Nk-4qJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hh9-VD-xuN" secondAttribute="trailing" id="WTc-EA-SeJ"/>
                             <constraint firstItem="shJ-Gx-SHg" firstAttribute="top" secondItem="9kE-ts-M9N" secondAttribute="bottom" id="YvD-1g-JBt"/>
                             <constraint firstItem="Q5A-jy-AFM" firstAttribute="top" secondItem="44j-Xv-1e3" secondAttribute="bottom" constant="14" id="ZPH-Sz-Vsd"/>
                             <constraint firstItem="bli-Os-QsJ" firstAttribute="leading" secondItem="JEr-VQ-63s" secondAttribute="trailing" constant="43" id="bCK-Dp-ARu"/>
-                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="JEr-VQ-63s" secondAttribute="bottom" constant="90" id="dWa-vm-jVG"/>
+                            <constraint firstItem="bY0-0Z-OfU" firstAttribute="top" secondItem="JEr-VQ-63s" secondAttribute="bottom" constant="80" id="dWa-vm-jVG"/>
                             <constraint firstItem="hh9-VD-xuN" firstAttribute="leading" secondItem="nlk-m4-nDu" secondAttribute="trailing" constant="27" id="eO6-NU-TCq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hIl-me-VWn" secondAttribute="trailing" constant="-9" id="ej1-ch-s7r"/>
                             <constraint firstItem="Iam-zA-V6M" firstAttribute="leading" secondItem="2Lx-Q8-91X" secondAttribute="trailing" constant="27" id="g9U-jZ-jNX"/>

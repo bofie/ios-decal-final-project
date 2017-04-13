@@ -24,16 +24,16 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         if timeLimit != 0 {
           timer.invalidate()
         }
-        self.viewDidLoad()
+        startOver()
         self.cardsCollectionView.reloadData()
     }
     
     @IBAction func bgmButton(_ sender: UIButton) {
-        if player!.isPlaying {
-            player!.pause()
+        if bgmPlayer!.isPlaying {
+            bgmPlayer!.pause()
         } else {
-            player!.prepareToPlay()
-            player!.play()
+            bgmPlayer!.prepareToPlay()
+            bgmPlayer!.play()
         }
     }
     
@@ -49,7 +49,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     var flipsNum: Int = 0
     var countDown: Int = 0
     var timer = Timer()
-    var player: AVAudioPlayer?
+    var bgmPlayer: AVAudioPlayer?
 
     
     var playerOneScore: Int = 0
@@ -64,6 +64,40 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         self.navigationController?.isNavigationBarHidden = true
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
+        if cardsNum == 12 {
+            if playerNum == 1 {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 120)
+            } else {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 130)
+            }
+            cardsCollectionView.contentInset.top = 100
+        }
+        if cardsNum == 24 {
+            if playerNum == 1 {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 100)
+            } else {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 110)
+            }
+            cardsCollectionView.contentInset.top = 50
+        }
+        if cardsNum == 36 {
+            if playerNum == 1 {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 75)
+            } else {
+                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 90)
+            }
+
+        }
+        let url = Bundle.main.url(forResource: "bgm", withExtension: "mp3")
+        do {
+            bgmPlayer = try AVAudioPlayer(contentsOf: url!)
+        }catch{
+            print(error)
+        }
+        startOver()
+    }
+    
+    func startOver() {
         cardsArray = createRandomCards(num: cardsNum)
         copyOfCardsArray = cardsArray.map {$0}
         popUpLabel.text = "Let's get started!😍"
@@ -73,21 +107,11 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
         }
         flipsTakenLabel.text = "0 Flips Taken"
         flipsNum = 0
-        if cardsNum == 12 {
-            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 120)
-            cardsCollectionView.contentInset.top = 100
-        }
-        if cardsNum == 24 {
-            popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 100)
-            cardsCollectionView.contentInset.top = 50
-        }
-        if cardsNum == 36 {
-            if playerNum == 1 {
-                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 65)
-            } else {
-                popUpLabel.center = CGPoint(x: UIScreen.main.bounds.midX, y: 90)
-            }
-
+        if timeLimit != 0 {
+            countDown = timeLimit
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        } else {
+            countDownLabel.text = ""
         }
         if playerNum == 1 {
             playerOneLabel.text = ""
@@ -102,23 +126,13 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
             playerTwoLabel.numberOfLines = 0
             playerTwoLabel.text = playerTwoName + "\n0 🃏"
         }
-        if timeLimit != 0 {
-            countDown = timeLimit
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
-        } else {
-            countDownLabel.text = ""
-        }
-        let url = Bundle.main.url(forResource: "bgm", withExtension: "mp3")
-        do {
-            player = try AVAudioPlayer(contentsOf: url!)
-        }catch{
-            print(error)
-        }
+
     }
     
     @IBAction func mainMenuButton(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
         self.cardsCollectionView.reloadData()
+        bgmPlayer?.stop()
     }
     
 
@@ -184,7 +198,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
                      timer.invalidate()
                     }
                     var alert = UIAlertController(title: "Congratulations!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
-                    if playerNum == 1 && singlePlayerName != "" {
+                    if playerNum == 1 && singlePlayerName != "Player" {
                         alert = UIAlertController(title: "Congratulations, " + singlePlayerName + "!", message: "You win!!", preferredStyle: UIAlertControllerStyle.alert)
                     }
                     if playerNum == 2 {
@@ -195,9 +209,12 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
                         } else {
                             alert = UIAlertController(title: "It's a draw!", message: "Rematch?", preferredStyle: UIAlertControllerStyle.alert)
                         }
+                        playerOneTurn = true
+                        playerOneScore = 0
+                        playerTwoScore = 0
                     }
                     alert.addAction(UIAlertAction(title: "Start over", style: UIAlertActionStyle.default, handler: {action in
-                        self.viewDidLoad()
+                        self.startOver()
                         self.cardsCollectionView.reloadData()}))
                     self.present(alert, animated: true, completion: nil)
                 }
