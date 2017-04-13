@@ -48,10 +48,10 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
             previousPlayerButton?.titleLabel?.font = UIFont(name: "Marker Felt", size: 22)
         }
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 30)
+        previousPlayerButton = button
         switch button.tag {
         case 1:
             playerNum = 1
-            previousPlayerButton = button
             singlePlayerNameTextField.isHidden = false
             playerOneNameTextField.isHidden = true
             playerTwoNameTextField.isHidden = true
@@ -65,7 +65,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
             playerTwoNameTextField.isHidden = false
             playerOneNameTextField.placeholder = "P1 Name "
             playerTwoNameTextField.placeholder = "P2 Name "
-            previousPlayerButton = button
         default:
             print("Unknown player num")
         return
@@ -85,16 +84,14 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
             previousCardButton?.titleLabel?.font = UIFont(name: "Marker Felt", size: 22)
         }
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 30)
+        previousCardButton = button
         switch button.tag {
         case 1:
             cardsNum = 12
-            previousCardButton = button
         case 2:
             cardsNum = 24
-            previousCardButton = button
         case 3:
             cardsNum = 36
-            previousCardButton = button
         default:
             print("Unknown cards num")
         return
@@ -109,24 +106,19 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
             previousTimeButton?.titleLabel?.font = UIFont(name: "Marker Felt", size: 22)
         }
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 30)
+        previousTimeButton = button
         switch button.tag {
         case 1:
             timeLimit = 60
-            previousTimeButton = button
         case 2:
             timeLimit = 120
-            previousTimeButton = button
         case 3:
             timeLimit = 180
-            previousTimeButton = button
         case 4:
             timeLimit = 240
-            previousTimeButton = button
         case 5:
             timeLimit = 300
-            previousTimeButton = button
         case 6:
-            previousTimeButton = button
             timeLimit = 0
         default:
             print("Unknown time limit")
