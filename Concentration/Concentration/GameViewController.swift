@@ -99,6 +99,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func startOver() {
         cardsArray = createRandomCards(num: cardsNum)
+        print (cardsArray)
         copyOfCardsArray = cardsArray.map {$0}
         popUpLabel.text = "Let's get started!😍"
         popUpLabel.numberOfLines = 0
@@ -257,7 +258,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
     func indexToSuits(index: Int) -> (Int, String) {
         var number:Int = 0
         number = index % 13
-        let suits = index / 13
+        let suits = (index - 1) / 13
         if number == 0 {
             number = 13
         }
@@ -268,7 +269,7 @@ class GameViewController: UIViewController,UICollectionViewDataSource, UICollect
             return (number, "diamonds")
         case 2:
             return (number, "hearts")
-        case 3...4:
+        case 3:
             return (number, "spades")
         default:
             return (0, "blah")
